@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const NNPArena = () => {
   return (<>
-    [in progress]
+    [in progress, testing actions]
   </>);
 };
 
