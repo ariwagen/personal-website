@@ -17,12 +17,16 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-
-      - name: Copy deploy.sh to EC2
+          
+      - name: Define private key
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
           chmod 600 private_key.pem
-          scp -o StrictHostKeyChecking=no -i private_key.pem scripts/deploy.sh ec2-user@3.15.13.239:/home/ec2-user/personal-website/scripts/
 
-      - name: Run deploy.sh on EC2
-        run: ssh -o StrictHostKeyChecking=no -i private_key.pem ec2-user@3.15.13.239 'bash /home/ec2-user/personal-website/scripts/deploy.sh'
+      - name: Pull latest code and run deploy.sh on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ec2-user@3.15.13.239 << 'EOF'
+            cd /home/ec2-user/personal-website
+            git pull origin main
+            bash /home/ec2-user/personal-website/scripts/deploy.sh
+          EOF
