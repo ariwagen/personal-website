@@ -18,5 +18,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-      - name: Deploy to EC2
-        run: ssh -o StrictHostKeyChecking=no ec2-user@3.15.13.239 'bash -s' < deploy.sh
+      - name: Copy deploy.sh to EC2
+        run: scp -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_KEY }} scripts/deploy.sh ec2-user@3.15.13.239:/home/ec2-user/personal-website/scripts/
+
+      - name: Run deploy.sh on EC2
+        run: ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_KEY }} ec2-user@3.15.13.239 'bash /home/ec2-user/personal-website/scripts/deploy.sh'
