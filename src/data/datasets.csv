@@ -1,4 +1,6 @@
-Dataset,Link,Preprint,Paper,License,Type,Level of Theory,Released/Updated
-SPICE,https://github.com/openmm/spice-dataset,https://arxiv.org/abs/2209.10702,https://doi.org/10.1038/s41597-022-01882-6,MIT,Molecular,ωB97M-D3(BJ)/def2-TZVPPD,2024-04-15
-MPtrj,https://figshare.com/articles/dataset/23713842,https://arxiv.org/abs/2302.14231,https://www.nature.com/articles/s42256-023-00716-3,MIT,Periodic,PBE+U,2023-06-20
-Materials Project,https://next-gen.materialsproject.org/api,,https://doi.org/10.1063/1.4812323,CC Attribution 4.0 International,Periodic,,
+Dataset,Link,Preprint,Paper,License,Level of Theory,Size,Type,Released/Updated
+SPICE,https://github.com/openmm/spice-dataset,https://arxiv.org/abs/2209.10702,https://doi.org/10.1038/s41597-022-01882-6,MIT,ωB97M-D3(BJ)/def2-TZVPPD,2.01M,Molecular,2024-04-15
+MPtrj,https://figshare.com/articles/dataset/23713842,https://arxiv.org/abs/2302.14231,https://doi.org/10.1038/s42256-023-00716-3,MIT,PBE+U,1.58M,Periodic,2023-06-20
+OC22,https://fair-chem.github.io/core/datasets/oc22.html,https://arxiv.org/abs/2206.08917,https://doi.org/10.1021/acscatal.2c05426,CC Attribution 4.0,PBE/PBE+U,9.85M,Periodic,2023-02-16
+OC20,https://fair-chem.github.io/core/datasets/oc20.html,,https://doi.org/10.1021/acscatal.0c04525,CC Attribution 4.0,RPBE,264.89M,Periodic,2021-02-10
+Materials Project,https://next-gen.materialsproject.org/api,,https://doi.org/10.1063/1.4812323,CC Attribution 4.0,,,Periodic,
