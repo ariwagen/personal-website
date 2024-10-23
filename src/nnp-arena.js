@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const NNPArena = () => {
+const GMTKN55 = () => {
   return (<>
-    [in progress, testing actions]
+    [in progress]
   </>);
 };
 
-ReactDOM.render(<NNPArena />, document.getElementById('root'));
+ReactDOM.render(<GMTKN55 />, document.getElementById('gmtkn55'));
