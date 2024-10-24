@@ -1,11 +1,11 @@
-Architecture,GitHub,Preprint,Paper,First Author,Last Author,License,Released/Updated
-TorchMD-Net,https://github.com/torchmd/torchmd-net,https://arxiv.org/abs/2402.17660,https://doi.org/10.1021/acs.jctc.4c00253,Raul P. Pelaez, Gianni De Fabritiis (Universitat Pompeu Fabra),MIT,2024-08-16
-Equiformer v2,https://github.com/atomicarchitects/equiformer_v2,https://arxiv.org/abs/2306.12059,,Yi-Lun Liao,Tess Smidt (MIT),MIT,2024-03-06
-Equiformer,https://github.com/atomicarchitects/equiformer,https://arxiv.org/abs/2206.11990,,Yi-Lun Liao,Tess Smidt (MIT),MIT,2023-02-28
-MACE,https://github.com/ACEsuit/mace,https://arxiv.org/abs/2206.07697,,Ilyes Batatia,Gábor Csányi (Cambridge),MIT,2023-01-26
-Allegro,https://github.com/mir-group/allegro,https://arxiv.org/abs/2204.05249,https://doi.org/10.1038/s41467-023-36329-y,Albert Musaelian,Boris Kozinsky (Harvard),MIT,2022-04-11
-NequIP,https://github.com/mir-group/nequip,https://arxiv.org/abs/2101.03164,https://doi.org/10.1038/s41467-022-29939-5,Simon Batzner,Boris Kozinsky (Harvard),MIT,2021-12-16
-DimeNet++,https://github.com/gasteigerjo/dimenet,https://arxiv.org/abs/2011.14115,,Johannes Gasteiger,Stephan Günnemann (TU Munich),Hippocratic License 2.1,2020-11-28
-DimeNet,https://github.com/gasteigerjo/dimenet,https://arxiv.org/abs/2003.03123,,Johannes Gasteiger,Stephan Günnemann (TU Munich),Hippocratic License 2.1,2020-03-06
-CGCNN,https://github.com/txie-93/cgcnn?tab=readme-ov-file,https://arxiv.org/abs/1710.10324,https://doi.org/10.1103/PhysRevLett.120.145301,Tian Xie,Jeffrey C. Grossman (MIT),MIT,2017-10-18
-SchNet,https://github.com/atomistic-machine-learning/SchNet,https://arxiv.org/abs/1706.08566,,Kristof T. Schütt,Klaus-Robert Müller (TU Berlin),MIT,2017-06-26
+Architecture,GitHub,Preprint,Paper,First Author,Last Author,Organization,License,Released/Updated
+TorchMD-Net,https://github.com/torchmd/torchmd-net,https://arxiv.org/abs/2402.17660,https://doi.org/10.1021/acs.jctc.4c00253,Raul P. Pelaez, Gianni De Fabritiis,Universitat Pompeu Fabra,MIT,2024-08-16
+Equiformer v2,https://github.com/atomicarchitects/equiformer_v2,https://arxiv.org/abs/2306.12059,,Yi-Lun Liao,Tess Smidt,MIT,MIT,2024-03-06
+Equiformer,https://github.com/atomicarchitects/equiformer,https://arxiv.org/abs/2206.11990,,Yi-Lun Liao,Tess Smidt,MIT,MIT,2023-02-28
+MACE,https://github.com/ACEsuit/mace,https://arxiv.org/abs/2206.07697,,Ilyes Batatia,Gábor Csányi,Cambridge,MIT,2023-01-26
+Allegro,https://github.com/mir-group/allegro,https://arxiv.org/abs/2204.05249,https://doi.org/10.1038/s41467-023-36329-y,Albert Musaelian,Boris Kozinsky,Harvard,MIT,2022-04-11
+NequIP,https://github.com/mir-group/nequip,https://arxiv.org/abs/2101.03164,https://doi.org/10.1038/s41467-022-29939-5,Simon Batzner,Boris Kozinsky,Harvard,MIT,2021-12-16
+DimeNet++,https://github.com/gasteigerjo/dimenet,https://arxiv.org/abs/2011.14115,,Johannes Gasteiger,Stephan Günnemann,TU Munich,Hippocratic License 2.1,2020-11-28
+DimeNet,https://github.com/gasteigerjo/dimenet,https://arxiv.org/abs/2003.03123,,Johannes Gasteiger,Stephan Günnemann,TU Munich,Hippocratic License 2.1,2020-03-06
+CGCNN,https://github.com/txie-93/cgcnn?tab=readme-ov-file,https://arxiv.org/abs/1710.10324,https://doi.org/10.1103/PhysRevLett.120.145301,Tian Xie,Jeffrey C. Grossman,MIT,MIT,2017-10-18
+SchNet,https://github.com/atomistic-machine-learning/SchNet,https://arxiv.org/abs/1706.08566,,Kristof T. Schütt,Klaus-Robert Müller,TU Berlin,MIT,2017-06-26
