@@ -1,0 +1,4 @@
+Name,Github,Preprint,Paper,Architecture,Dataset,License,Released/Updated
+MACE-MP-0,https://github.com/ACEsuit/mace-mp,https://arxiv.org/abs/2401.00096,,MACE,MPtrj,MIT,2024-03-24
+MACE-OFF23,https://github.com/ACEsuit/mace-off,https://arxiv.org/abs/2312.15211,,MACE,SPICE and additions,ASL,2023-12-23
+"AIMNet2 (ωB97M-D3, old)",https://github.com/isayevlab/AIMNet2,https://chemrxiv.org/engage/chemrxiv/article-details/6525b39e8bab5d2055123f75,,custom,custom,MIT,2023-10-12
