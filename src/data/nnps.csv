@@ -1,4 +1,7 @@
-Name,Github,Preprint,Paper,Architecture,Dataset,License,Released/Updated
-MACE-MP-0,https://github.com/ACEsuit/mace-mp,https://arxiv.org/abs/2401.00096,,MACE,MPtrj,MIT,2024-03-24
-MACE-OFF23,https://github.com/ACEsuit/mace-off,https://arxiv.org/abs/2312.15211,,MACE,SPICE and additions,ASL,2023-12-23
-"AIMNet2 (ωB97M-D3, old)",https://github.com/isayevlab/AIMNet2,https://chemrxiv.org/engage/chemrxiv/article-details/6525b39e8bab5d2055123f75,,custom,custom,MIT,2023-10-12
+Name,Github,Preprint,Paper,First Author,Last Author,Organization,Architecture,Dataset,License,Released/Updated
+MACE-MP-0,https://github.com/ACEsuit/mace-mp,https://arxiv.org/abs/2401.00096,,Ilyes Batatia,Gábor Csányi,Cambridge,MACE,MPtrj,MIT,2024-03-24
+MACE-OFF23,https://github.com/ACEsuit/mace-off,https://arxiv.org/abs/2312.15211,,Dávid Péter Kovács,Gábor Csányi,Cambridge,MACE,SPICE and additions,ASL,2023-12-23
+"AIMNet2 (ωB97M-D3, old)",https://github.com/isayevlab/AIMNet2,https://chemrxiv.org/engage/chemrxiv/article-details/6525b39e8bab5d2055123f75,,Dylan Anstine,Olexandr Isayev,CMU,custom,custom,MIT,2023-10-12
+OrbNet Denali,,https://arxiv.org/abs/2107.00299,https://doi.org/10.1063/5.0061990,Anders S. Christensen,Thomas F. Miller III,Iambic (prev. Entos),custom,custom,commercial,2021-07-05
+ANI-2x,https://github.com/aiqm/torchani,https://chemrxiv.org/engage/chemrxiv/article-details/60c747e9567dfec574ec48df,https://doi.org/10.1021/acs.jctc.0c00121,Christian Devereux,Adrian E. Roitberg,University of Florida,custom,custom,,2020-06-16
+ANI-1ccx,https://github.com/aiqm/torchani,https://chemrxiv.org/engage/chemrxiv/article-details/60c742ab4c8919041cad24bd,https://doi.org/10.1038/s41467-019-10827-4,Justin S. Smith,Adrian E. Roitberg,University of Florida,custom,custom,,2019-07-01
