@@ -1,4 +1,5 @@
 Name,Github,Preprint,Paper,First Author,Last Author,Organization,Architecture,Dataset,License,Released/Updated
+SO3LR,https://github.com/general-molecular-simulations/so3lr,https://chemrxiv.org/engage/chemrxiv/article-details/6704263051558a15ef6478b6,,Adil Kabylda,Alexandre Tkatchenko,University of Luxembourg,So3krates,custom,MIT,2024-10-08
 MACE-MP-0,https://github.com/ACEsuit/mace-mp,https://arxiv.org/abs/2401.00096,,Ilyes Batatia,Gábor Csányi,Cambridge,MACE,MPtrj,MIT,2024-03-24
 MACE-OFF23,https://github.com/ACEsuit/mace-off,https://arxiv.org/abs/2312.15211,,Dávid Péter Kovács,Gábor Csányi,Cambridge,MACE,SPICE and additions,ASL,2023-12-23
 "AIMNet2 (ωB97M-D3, old)",https://github.com/isayevlab/AIMNet2,https://chemrxiv.org/engage/chemrxiv/article-details/6525b39e8bab5d2055123f75,,Dylan Anstine,Olexandr Isayev,CMU,custom,custom,MIT,2023-10-12

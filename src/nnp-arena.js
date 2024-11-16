@@ -8,6 +8,7 @@ import macemp0 from './data/gmtkn55/mace-mp-0-gmtkn55.csv';
 import orbnetdenali from './data/gmtkn55/orbnet-denali-gmtkn55.csv';
 import ani2x from './data/gmtkn55/ani-2x-gmtkn55.csv';
 import ani1ccx from './data/gmtkn55/ani-1ccx-gmtkn55.csv';
+import so3lr from './data/gmtkn55/so3lr-gmtkn55.csv';
 
 // standardize names with nnps.csv please!
 // sorry this isn't more high tech
@@ -27,6 +28,10 @@ const gmtkn55Benchmarks = {
   "ANI-2x": {
     benchmark: ani2x,
     from: "OrbNet Denali SI"
+  },
+  "SO3LR": {
+    benchmark: so3lr,
+    from: "Ari 2024-11-16"
   },
   "MACE-MP-0": {
     benchmark: macemp0,

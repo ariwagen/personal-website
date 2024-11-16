@@ -1,5 +1,6 @@
 Architecture,GitHub,Preprint,Paper,First Author,Last Author,Organization,License,Released/Updated
 TorchMD-Net,https://github.com/torchmd/torchmd-net,https://arxiv.org/abs/2402.17660,https://doi.org/10.1021/acs.jctc.4c00253,Raul P. Pelaez, Gianni De Fabritiis,Universitat Pompeu Fabra,MIT,2024-08-16
+So3krates,https://github.com/thorben-frank/mlff,https://arxiv.org/abs/2309.15126,https://doi.org/10.1038/s41467-024-50620-6,J. Thorben Frank,Stefan Chmiela,TU Berlin,MIT,2024-08-06
 Equiformer v2,https://github.com/atomicarchitects/equiformer_v2,https://arxiv.org/abs/2306.12059,,Yi-Lun Liao,Tess Smidt,MIT,MIT,2024-03-06
 Equiformer,https://github.com/atomicarchitects/equiformer,https://arxiv.org/abs/2206.11990,,Yi-Lun Liao,Tess Smidt,MIT,MIT,2023-02-28
 MACE,https://github.com/ACEsuit/mace,https://arxiv.org/abs/2206.07697,,Ilyes Batatia,Gábor Csányi,Cambridge,MIT,2023-01-26

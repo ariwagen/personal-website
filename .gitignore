@@ -6,3 +6,6 @@ dist/
 
 # Environment variables
 .env
+
+# Python venv
+scripts/gmtkn55/venv
