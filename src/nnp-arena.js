@@ -1,41 +1,46 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 import nnps from './data/nnps.csv';
 import gmtkn55Subsets from './data/gmtkn55/subsets.csv';
 
-import aimnet2 from './data/gmtkn55/aimnet2-old-gmtkn55.csv';
+import so3lr from './data/gmtkn55/so3lr-gmtkn55.csv';
+import aimnet2new from './data/gmtkn55/aimnet2-new-gmtkn55.csv';
 import macemp0 from './data/gmtkn55/mace-mp-0-gmtkn55.csv';
+import aimnet2 from './data/gmtkn55/aimnet2-old-gmtkn55.csv';
 import orbnetdenali from './data/gmtkn55/orbnet-denali-gmtkn55.csv';
 import ani2x from './data/gmtkn55/ani-2x-gmtkn55.csv';
 import ani1ccx from './data/gmtkn55/ani-1ccx-gmtkn55.csv';
-import so3lr from './data/gmtkn55/so3lr-gmtkn55.csv';
 
 // standardize names with nnps.csv please!
 // sorry this isn't more high tech
 const gmtkn55Benchmarks = {
-  "OrbNet Denali": {
-    benchmark: orbnetdenali,
-    from: "OrbNet Denali SI"
+  "SO3LR": {
+    benchmark: so3lr,
+    from: "Ari 2024-11-16"
+  },
+  "AIMNet2 (ωB97M-D3, new)": {
+    benchmark: aimnet2new,
+    from: "Ari 2024-11-18"
+  },
+  "MACE-MP-0": {
+    benchmark: macemp0,
+    from: "Ari 2024-10-23"
   },
   "AIMNet2 (ωB97M-D3, old)": {
     benchmark: aimnet2,
     from: "Ari 2024-10-23"
   },
-  "ANI-1ccx": {
-    benchmark: ani1ccx,
+  "OrbNet Denali": {
+    benchmark: orbnetdenali,
     from: "OrbNet Denali SI"
   },
   "ANI-2x": {
     benchmark: ani2x,
     from: "OrbNet Denali SI"
   },
-  "SO3LR": {
-    benchmark: so3lr,
-    from: "Ari 2024-11-16"
-  },
-  "MACE-MP-0": {
-    benchmark: macemp0,
-    from: "Ari 2024-10-23"
+  "ANI-1ccx": {
+    benchmark: ani1ccx,
+    from: "OrbNet Denali SI"
   },
 };
 
@@ -70,7 +75,7 @@ const GMTKN55 = () => {
       }
     });
 
-    return totalWeight > 0 ? (totalWeightedMAE / totalWeight).toFixed(2) : null;
+    return totalWeight > 0 ? (totalWeightedMAE / totalWeight) : null;
   };
 
   const findSkippedSubsets = (benchmark) => {
@@ -122,28 +127,56 @@ const GMTKN55 = () => {
     }
   ];
 
+  const data = useMemo(() => Object.keys(gmtkn55Benchmarks).map((nnp) => {
+    let row = {
+      name: nnp,
+      skipped: findSkippedSubsets(gmtkn55Benchmarks[nnp].benchmark),
+      from: gmtkn55Benchmarks[nnp].from
+    };
+    categories.forEach(category => {
+      row[category.name] = calculateWeightedMAE(gmtkn55Benchmarks[nnp].benchmark, category.name);
+    });
+    return row;
+  }), []);
+
+  const [sortOn, setSortOn] = useState("All");
+
+  const sortedData = useMemo(() => {
+    return [...data].sort((a, b) => {
+      console.log(typeof a[sortOn]);
+      if (typeof a[sortOn] === "number" && typeof b[sortOn] === "number") {
+        return a[sortOn] - b[sortOn];
+      } else if (typeof a[sortOn] === "string" && typeof b[sortOn] === "string") {
+        return a[sortOn].localeCompare(b[sortOn]);
+      }
+      return 0;
+    });
+  }, [data, sortOn]);
+
   return (
     <table>
       <thead>
         <tr>
           <th style={{ "paddingRight": "2ch" }}>Name</th>
-          {categories.map(category =>
-            <th style={{ "paddingRight": "2ch" }}>{category.display}</th>
+          {categories.map((category, i) =>
+            <th style={{ "paddingRight": "2ch" }} key={i}>
+              {category.display} <button onClick={() => setSortOn(category.name)}>↓</button>
+            </th>
           )}
           <th style={{ "paddingRight": "2ch" }}>Incomplete Subsets</th>
           <th style={{ "paddingRight": "2ch" }}>Benchmarked By</th>
         </tr>
       </thead>
       <tbody>
-        {Object.keys(gmtkn55Benchmarks).map((nnp, i) => {
+        {sortedData.map((row, i) => {
           return (
             <tr key={i}>
-              <td style={{ "paddingRight": "2ch" }}>{nnp}</td>
-              {categories.map(category =>
-                <td style={{ "paddingRight": "2ch" }}>{calculateWeightedMAE(gmtkn55Benchmarks[nnp].benchmark, category.name)}</td>
+              <td style={{ "paddingRight": "2ch" }}>{row.name}</td>
+              {categories.map((category, j) =>
+                <td style={{ "paddingRight": "2ch" }} key={`${i}${j}`}>{row[category.name]?.toFixed(2)}</td>
               )}
-              <td style={{ "paddingRight": "2ch" }}>{findSkippedSubsets(gmtkn55Benchmarks[nnp].benchmark)}</td>
-              <td style={{ "paddingRight": "2ch" }}>{gmtkn55Benchmarks[nnp].from}</td>
+              <td style={{ "paddingRight": "2ch" }}>{row.skipped}</td>
+              <td style={{ "paddingRight": "2ch" }}>{row.from}</td>
             </tr>
           );
         })}
