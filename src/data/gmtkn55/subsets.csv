@@ -5,7 +5,7 @@ AHB21,Interaction energies in anion–neutral dimers,Intermolecular noncovalent 
 AL2x6,Dimerisation energies of AlX3 compounds,Basic properties and reaction energies for small systems,1.58,6,TRUE
 ALK8,Dissociation and other reactions of alkaline compounds,Basic properties and reaction energies for small systems,0.91,8,TRUE
 ALKBDE10,Dissociation energies in group-1 and -2 diatomics,Basic properties and reaction energies for small systems,0.56,10,TRUE
-AMINO20x4,Relative energies in amino acid conformers,Intramolecular noncovalent interactions,23.31,80,FALSE
+Amino20x4,Relative energies in amino acid conformers,Intramolecular noncovalent interactions,23.31,80,FALSE
 BH76,"Barrier heights of hydrogen transfer, heavy atom transfer, nucleophilic substitution, unimolecular and association reactions",Reaction barrier heights,3.05,76,TRUE
 BH76RC,Reaction energies of the BH76 set,Basic properties and reaction energies for small systems,2.66,30,TRUE
 BHDIV10,Diverse reaction barrier heights,Reaction barrier heights,1.25,10,FALSE

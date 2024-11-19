@@ -1,5 +1,5 @@
 Dataset,Link,Preprint,Paper,Level of Theory,Size,Type,License,Released/Updated
-SPICE,https://github.com/openmm/spice-dataset,https://arxiv.org/abs/2209.10702,https://doi.org/10.1038/s41597-022-01882-6,ωB97M-D3(BJ)/def2-TZVPPD,2.01M,Molecular,MIT,2024-04-15
+SPICE,https://github.com/openmm/spice-dataset,https://arxiv.org/abs/2209.10702,https://doi.org/10.1038/s41597-022-01882-6,ωB97M-D3BJ/def2-TZVPPD,2.01M,Molecular,MIT,2024-04-15
 MPtrj,https://figshare.com/articles/dataset/23713842,https://arxiv.org/abs/2302.14231,https://doi.org/10.1038/s42256-023-00716-3,PBE+U,1.58M,Periodic,MIT,2023-06-20
 OC22,https://fair-chem.github.io/core/datasets/oc22.html,https://arxiv.org/abs/2206.08917,https://doi.org/10.1021/acscatal.2c05426,PBE/PBE+U,9.85M,Periodic,CC Attribution 4.0,2023-02-16
 OrbNet Denali Taining Data,https://figshare.com/articles/dataset/OrbNet_Denali_Training_Data/14883867,https://arxiv.org/abs/2107.00299,https://doi.org/10.1063/5.0061990,ωB97X-D3/def2-TZVP,2.3M,Molecular,CC Attribution 4.0,2021-07-01

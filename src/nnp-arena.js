@@ -11,8 +11,6 @@ import orbnetdenali from './data/gmtkn55/orbnet-denali-gmtkn55.csv';
 import ani2x from './data/gmtkn55/ani-2x-gmtkn55.csv';
 import ani1ccx from './data/gmtkn55/ani-1ccx-gmtkn55.csv';
 
-// standardize names with nnps.csv please!
-// sorry this isn't more high tech
 const gmtkn55Benchmarks = {
   "SO3LR": {
     benchmark: so3lr,
@@ -45,15 +43,17 @@ const gmtkn55Benchmarks = {
 };
 
 const GMTKN55 = () => {
+  const subsetCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "subset");
+  const descriptionCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "description");
+  const numCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "num");
+  const weightCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "weight");
+  const categoryCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "category");
+  const excludedCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "excluded");
+
   const calculateWeightedMAE = (benchmark, category) => {
     let totalWeightedMAE = 0;
     let totalWeight = 0;
 
-    const subsetCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "subset");
-    const numCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "num");
-    const weightCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "weight");
-    const categoryCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "category");
-    const excludedCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "excluded");
     const filteredRows = gmtkn55Subsets.filter(row => row[excludedCol].toLowerCase() !== "true"
       ? (category === "All" ? true : row[categoryCol] === category)
       : false);
@@ -81,8 +81,6 @@ const GMTKN55 = () => {
   const findSkippedSubsets = (benchmark) => {
     let numSkipped = 0;
 
-    const subsetCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "subset");
-    const excludedCol = gmtkn55Subsets[0].findIndex(entry => entry.toLowerCase() === "excluded");
     const filteredRows = gmtkn55Subsets.filter(row => row[excludedCol].toLowerCase() !== "true");
     const filteredSubsets = filteredRows.map(row => row[subsetCol].toLowerCase());
 
@@ -127,23 +125,39 @@ const GMTKN55 = () => {
     }
   ];
 
+  let subsets = [];
+  gmtkn55Subsets.forEach((row, i) => {
+    if (i !== 0 && row[excludedCol].toLowerCase() !== "true") {
+      subsets.push({ subset: row[subsetCol], description: row[descriptionCol] })
+    }
+  });
+
   const data = useMemo(() => Object.keys(gmtkn55Benchmarks).map((nnp) => {
+    const benchmark = gmtkn55Benchmarks[nnp].benchmark;
+
     let row = {
       name: nnp,
-      skipped: findSkippedSubsets(gmtkn55Benchmarks[nnp].benchmark),
+      skipped: findSkippedSubsets(benchmark),
       from: gmtkn55Benchmarks[nnp].from
     };
     categories.forEach(category => {
-      row[category.name] = calculateWeightedMAE(gmtkn55Benchmarks[nnp].benchmark, category.name);
+      row[category.name] = calculateWeightedMAE(benchmark, category.name);
+    });
+
+    const benchmarkSubsetCol = benchmark[0].findIndex(entry => entry.toLowerCase() === "subset");
+    const benchmarkMaeCol = benchmark[0].findIndex(entry => entry.toLowerCase() === "mae");
+
+    benchmark.forEach(benchmarkRow => {
+      row[benchmarkRow[benchmarkSubsetCol]] = benchmarkRow[benchmarkMaeCol] ? Number(benchmarkRow[benchmarkMaeCol]) : null;
     });
     return row;
   }), []);
 
+  const [viewSubsets, setViewSubsets] = useState(true);
   const [sortOn, setSortOn] = useState("All");
 
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => {
-      console.log(typeof a[sortOn]);
       if (typeof a[sortOn] === "number" && typeof b[sortOn] === "number") {
         return a[sortOn] - b[sortOn];
       } else if (typeof a[sortOn] === "string" && typeof b[sortOn] === "string") {
@@ -154,34 +168,57 @@ const GMTKN55 = () => {
   }, [data, sortOn]);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th style={{ "paddingRight": "2ch" }}>Name</th>
-          {categories.map((category, i) =>
-            <th style={{ "paddingRight": "2ch" }} key={i}>
-              {category.display} <button onClick={() => setSortOn(category.name)}>↓</button>
-            </th>
-          )}
-          <th style={{ "paddingRight": "2ch" }}>Incomplete Subsets</th>
-          <th style={{ "paddingRight": "2ch" }}>Benchmarked By</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sortedData.map((row, i) => {
-          return (
-            <tr key={i}>
-              <td style={{ "paddingRight": "2ch" }}>{row.name}</td>
-              {categories.map((category, j) =>
-                <td style={{ "paddingRight": "2ch" }} key={`${i}${j}`}>{row[category.name]?.toFixed(2)}</td>
-              )}
-              <td style={{ "paddingRight": "2ch" }}>{row.skipped}</td>
-              <td style={{ "paddingRight": "2ch" }}>{row.from}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <>
+      <button onClick={() => setViewSubsets(!viewSubsets)}>
+        {viewSubsets ? "View results by category" : "View results by subset"}
+      </button>
+      <table>
+        <thead>
+          <tr>
+            <th style={{ "paddingRight": "2ch" }}>Name</th>
+            {viewSubsets
+              ? subsets.map((subset, i) =>
+                <th style={{ "paddingRight": "2ch" }} key={i} title={subset.description}>
+                  {subset.subset} <button onClick={() => setSortOn(subset.subset)}>↓</button>
+                </th>
+              )
+              : <>
+                {categories.map((category, i) =>
+                  <th style={{ "paddingRight": "2ch" }} key={i}>
+                    {category.display} <button onClick={() => setSortOn(category.name)}>↓</button>
+                  </th>
+                )}
+                <th style={{ "paddingRight": "2ch" }}>Incomplete Subsets</th>
+              </>
+            }
+            <th style={{ "paddingRight": "2ch" }}>Benchmarked By</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedData.map((row, i) => {
+            return (
+              <tr key={i}>
+                <td style={{ "paddingRight": "2ch" }}>{row.name}</td>
+                {viewSubsets
+                  ? subsets.map((subset, j) =>
+                    <td style={{ "paddingRight": "2ch" }} key={`${i}${j}`}>
+                      {row[subset.subset]?.toFixed(2)}
+                    </td>
+                  )
+                  : <>
+                    {categories.map((category, j) =>
+                      <td style={{ "paddingRight": "2ch" }} key={`${i}${j}`}>{row[category.name]?.toFixed(2)}</td>
+                    )}
+                    <td style={{ "paddingRight": "2ch" }}>{row.skipped}</td>
+                  </>
+                }
+                <td style={{ "paddingRight": "2ch" }}>{row.from}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
 };
 
