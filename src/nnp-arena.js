@@ -153,7 +153,7 @@ const GMTKN55 = () => {
     return row;
   }), []);
 
-  const [viewSubsets, setViewSubsets] = useState(true);
+  const [viewSubsets, setViewSubsets] = useState(false);
   const [sortOn, setSortOn] = useState("All");
 
   const sortedData = useMemo(() => {
