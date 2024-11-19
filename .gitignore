@@ -10,3 +10,4 @@ dist/
 # Python venv
 scripts/gmtkn55/venv
 scripts/gmtkn55/__pycache__
+scripts/gmtkn55/GMTKN55.yaml
