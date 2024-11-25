@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import nnps from './data/nnps.csv';
 import gmtkn55Subsets from './data/gmtkn55/subsets.csv';
 
+import omat24 from './data/gmtkn55/omat24-gmtkn55.csv';
+import orbd3v2 from './data/gmtkn55/orb-d3-v2-gmtkn55.csv';
+import orbv2 from './data/gmtkn55/orb-v2-gmtkn55.csv';
 import so3lr from './data/gmtkn55/so3lr-gmtkn55.csv';
 import aimnet2new from './data/gmtkn55/aimnet2-new-gmtkn55.csv';
 import macemp0 from './data/gmtkn55/mace-mp-0-gmtkn55.csv';
@@ -12,6 +15,18 @@ import ani2x from './data/gmtkn55/ani-2x-gmtkn55.csv';
 import ani1ccx from './data/gmtkn55/ani-1ccx-gmtkn55.csv';
 
 const gmtkn55Benchmarks = {
+  "OMat24 eqV2-L": {
+    benchmark: omat24,
+    from: "Ari 2024-11-25"
+  },
+  "Orb-d3-v2": {
+    benchmark: orbd3v2,
+    from: "Ari 2024-11-24"
+  },
+  "Orb-v2": {
+    benchmark: orbv2,
+    from: "Ari 2024-11-24"
+  },
   "SO3LR": {
     benchmark: so3lr,
     from: "Ari 2024-11-16"

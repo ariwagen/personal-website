@@ -11,3 +11,6 @@ dist/
 scripts/gmtkn55/venv
 scripts/gmtkn55/__pycache__
 scripts/gmtkn55/GMTKN55.yaml
+
+# Checkpoints
+scripts/gmtkn55/eqV2_153M_omat.pt
