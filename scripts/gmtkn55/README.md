@@ -1,5 +1,6 @@
 # GMTKN55 Benchmark
 
 ```bash
-modal run run.py
+source venv/bin/activate
+modal run run-benchmark-remote.py
 ```

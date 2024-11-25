@@ -5,7 +5,23 @@ import cctk
 import io
 import yaml
 
-app = modal.App("aimnet2-benchmark")
+nnp = "omat24"  # aimnet2-new, so3lr, orb-v2, omat24
+
+app = modal.App("gmtkn55-benchmark")
+
+so3lr_image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .apt_install("git")
+    .run_commands(
+        "git clone https://github.com/general-molecular-simulations/so3lr.git"
+    )
+    .workdir("so3lr")
+    .run_commands("pip install .")
+    .pip_install("cctk", "tensorflow", "tensorflow-datasets")
+    .run_commands(
+        'pip install "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html',
+    )
+)
 
 aimnet2_image = (
     modal.Image.micromamba(python_version="3.11")
@@ -25,11 +41,83 @@ aimnet2_image = (
         "git clone https://github.com/isayevlab/AIMNet2.git",
     )
     .workdir("AIMNet2")
-    .run_commands("pip install cctk", "python setup.py install")
+    .pip_install("cctk")
+    .run_commands("python setup.py install")
 )
 
+orbv2_image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .apt_install("git")
+    .pip_install("orb-models, cctk")
+    .run_commands(
+        'pip install "pynanoflann@git+https://github.com/dwastberg/pynanoflann#egg=af434039ae14bedcbb838a7808924d6689274168"',
+    )
+)
 
-@app.function(image=aimnet2_image, gpu="A10G")
+omat24_image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .apt_install("git")
+    .pip_install("fairchem-core")
+    .pip_install("cctk")
+    .run_commands(
+        "pip install torch-scatter -f https://data.pyg.org/whl/torch-2.4.0+cu121.html",
+        "pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-2.4.0+cu121.html",
+        "pip install torch-geometric",
+    )
+)
+omat24_volume = modal.Volume.from_name("omat24")
+
+nnps = {
+    "so3lr": {
+        "image": so3lr_image,
+        "volume": None,
+        "allowed_elements": [1, 6, 7, 8, 9, 15, 16, 17],
+        "allowed_multiplicity": [1],
+        "allowed_charge": [0],
+    },
+    "aimnet2-new": {
+        "image": aimnet2_image,
+        "volume": None,
+        "allowed_elements": [
+            1,
+            5,
+            6,
+            7,
+            8,
+            9,
+            14,
+            15,
+            16,
+            17,
+            33,
+            34,
+            35,
+            53,
+        ],
+        "allowed_multiplicity": None,
+        "allowed_charge": None,
+    },
+    "orb-v2": {
+        "image": orbv2_image,
+        "volume": None,
+        "allowed_elements": None,
+        "allowed_multiplicity": [1],
+        "allowed_charge": [0],
+    },
+    "omat24": {
+        "image": omat24_image,
+        "volume": omat24_volume,
+        "allowed_elements": None,
+        "allowed_multiplicity": [1],
+        "allowed_charge": [0],
+    },
+}
+
+image = nnps[nnp]["image"]
+volume = nnps[nnp]["volume"]
+
+
+@app.function(image=image, gpu="A10G", volumes={"/model": volume}, timeout=600)
 def eval_benchmark(
     structure_dict: Dict[str, Any],
     subsets: Optional[List[str]] = None,
@@ -45,8 +133,18 @@ def eval_benchmark(
     :param csv_out_path: the path to the CSV output file
     :param subsets: which subsets to run
     """
-    from aimnet2calc import AIMNet2ASE
+    if nnp == "so3lr":
+        from so3lr import So3lrCalculator
+    elif nnp == "aimnet2-new":
+        from aimnet2calc import AIMNet2ASE
+    elif nnp == "orb-v2":
+        from orb_models.forcefield import pretrained
+        from orb_models.forcefield.calculator import ORBCalculator
+    elif nnp == "omat24":
+        from fairchem.core import OCPCalculator
+
     import ase
+    import copy
     import numpy as np
 
     def _should_run_system(
@@ -76,7 +174,19 @@ def eval_benchmark(
 
     overall_errors = []
     overall_weights = []
-    calculator = AIMNet2ASE("aimnet2")
+
+    if nnp == "so3lr":
+        calculator = So3lrCalculator(calculate_stress=False, dtype=np.float32)
+    elif nnp == "aimnet2-new":
+        calculator = AIMNet2ASE("aimnet2")
+    elif nnp == "orb-v2":
+        orbff = pretrained.orb_v2(device="cuda")  # or orb_d3_v2
+        calculator = ORBCalculator(orbff, device="cuda")
+    elif nnp == "omat24":
+        calculator = OCPCalculator(
+            checkpoint_path="/model/eqV2_153M_omat.pt",
+            cpu=False,
+        )
 
     csv_output = io.StringIO()
     csv_writer = csv.writer(csv_output)
@@ -110,13 +220,22 @@ def eval_benchmark(
                         positions=np.array(species["Positions"]),
                     )
                     multiplicity = species["UHF"] + 1
-                    charge = species["Charge"]
-                    atoms.calc = calculator
-                    calculator.set_charge(charge)
-                    calculator.set_mult(multiplicity)
-                    result = atoms.get_potential_energy()
+                    charge = species["Charge"] + 0
+
+                    if nnp == "so3lr":
+                        atoms.set_calculator(copy.deepcopy(calculator))
+                        result = atoms.get_potential_energy()
+                    elif nnp == "aimnet2-new":
+                        atoms.set_calculator(calculator)
+                        calculator.set_charge(charge)
+                        calculator.set_mult(multiplicity)
+                        result = atoms.get_potential_energy()[0]
+                    else:
+                        atoms.set_calculator(calculator)
+                        result = atoms.get_potential_energy()
+
                     comp_value += (
-                        result[0] * species["Count"] * 23.0609
+                        result * species["Count"] * 23.0609
                     )  # kcal/mol conversion
 
                 error = ref_value - comp_value
@@ -154,33 +273,16 @@ def main():
     with open("GMTKN55.yaml", "r") as file:
         structure_dict = yaml.safe_load(file)
 
-    allowed_elements = [
-        1,
-        5,
-        6,
-        7,
-        8,
-        9,
-        14,
-        15,
-        16,
-        17,
-        33,
-        34,
-        35,
-        53,
-    ]  # Define allowed elements if needed
-
     result = eval_benchmark.remote(
         structure_dict=structure_dict,
         subsets=[],  # Specify subsets if needed
         skip_subsets=[],
-        # allowed_multiplicity=[1],
-        # allowed_charge=[0],
-        allowed_elements=allowed_elements,
+        allowed_multiplicity=nnps[nnp]["allowed_multiplicity"],
+        allowed_charge=nnps[nnp]["allowed_charge"],
+        allowed_elements=nnps[nnp]["allowed_elements"],
     )
 
-    csv_file_path = "benchmark_results.csv"
+    csv_file_path = f"{nnp}-gmtkn55.csv"
     with open(csv_file_path, "w", newline="") as csv_file:
         csv_file.write(result["CSV"])
 
