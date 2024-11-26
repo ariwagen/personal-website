@@ -14,6 +14,10 @@ import orbnetdenali from './data/gmtkn55/orbnet-denali-gmtkn55.csv';
 import ani2x from './data/gmtkn55/ani-2x-gmtkn55.csv';
 import ani1ccx from './data/gmtkn55/ani-1ccx-gmtkn55.csv';
 
+import gfn2xtb from './data/gmtkn55/gfn2-xtb-gmtkn55.csv';
+import pbed3bj from './data/gmtkn55/pbe-d3bj-gmtkn55.csv';
+import wb97md3bj from './data/gmtkn55/wb97m-d3bj-gmtkn55.csv';
+
 const gmtkn55Benchmarks = {
   "OMat24 eqV2-L": {
     benchmark: omat24,
@@ -45,16 +49,32 @@ const gmtkn55Benchmarks = {
   },
   "OrbNet Denali": {
     benchmark: orbnetdenali,
-    from: "OrbNet Denali SI"
+    from: "https://arxiv.org/abs/2107.00299"
   },
   "ANI-2x": {
     benchmark: ani2x,
-    from: "OrbNet Denali SI"
+    from: "https://arxiv.org/abs/2107.00299"
   },
   "ANI-1ccx": {
     benchmark: ani1ccx,
-    from: "OrbNet Denali SI"
+    from: "https://arxiv.org/abs/2107.00299"
   },
+  // references levels of theory
+  "GFN2-xTB": {
+    benchmark: gfn2xtb,
+    from: "https://arxiv.org/abs/2107.00299",
+    reference: true
+  },
+  "PBE-D3(BJ)/def2-QZVP": {
+    benchmark: pbed3bj,
+    from: "https://pubs.rsc.org/en/content/articlelanding/2017/cp/c7cp04913g",
+    reference: true,
+  },
+  "ωB97M-D3(BJ)/def2-QZVP": {
+    benchmark: wb97md3bj,
+    from: "https://pubs.acs.org/doi/10.1021/acs.jctc.8b00842",
+    reference: true,
+  }
 };
 
 const GMTKN55 = () => {
@@ -153,7 +173,8 @@ const GMTKN55 = () => {
     let row = {
       name: nnp,
       skipped: findSkippedSubsets(benchmark),
-      from: gmtkn55Benchmarks[nnp].from
+      from: gmtkn55Benchmarks[nnp].from,
+      reference: gmtkn55Benchmarks[nnp].reference || false,
     };
     categories.forEach(category => {
       row[category.name] = calculateWeightedMAE(benchmark, category.name);
@@ -212,7 +233,7 @@ const GMTKN55 = () => {
         <tbody>
           {sortedData.map((row, i) => {
             return (
-              <tr key={i}>
+              <tr key={i} style={row.reference ? { "font-style": "italic", "opacity": 0.5 } : {}}>
                 <td style={{ "paddingRight": "2ch" }}>{row.name}</td>
                 {viewSubsets
                   ? subsets.map((subset, j) =>
@@ -227,7 +248,7 @@ const GMTKN55 = () => {
                     <td style={{ "paddingRight": "2ch" }}>{row.skipped}</td>
                   </>
                 }
-                <td style={{ "paddingRight": "2ch" }}>{row.from}</td>
+                <td style={{ "paddingRight": "2ch" }}>{row.from.includes("http") ? <a href={row.from}>link</a> : row.from}</td>
               </tr>
             );
           })}
