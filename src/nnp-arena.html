@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,30 +19,27 @@
     <h1>NNP Arena</h1>
     <p>
       <i>
-        a <a href="https://lmarena.ai/" target="_blank">LMSYS</a>-style
-        leaderboard of NNP benchmarks
+        a <a href="https://lmarena.ai/" target="_blank">LMSYS</a>-style leaderboard of NNP
+        benchmarks
       </i>
     </p>
 
     <h2>GMTKN55 Leaderboard</h2>
     <p>
-      <a href="https://www.chemie.uni-bonn.de/grimme/de/software/gmtkn/gmtkn55"
-        >GMTKN55</a
-      >
-      is a high-accuracy molecular benchmark that measures basic properties,
-      reaction energies, and noncovalent interactions. Lower scores are better.
+      <a href="https://www.chemie.uni-bonn.de/grimme/de/software/gmtkn/gmtkn55">GMTKN55</a>
+      is a high-accuracy molecular benchmark that measures basic properties, reaction energies, and
+      noncovalent interactions.
+    </p>
+    <p>
+      The GMTKN55 benchmark comprises 55 subsets. Each subset contains a number of relative energy
+      measurements computed at the CCSD(T) level of theory. When viewing subset-level results, the
+      mean absolute deviation/error (MAD/MAE) in kcal/mol is shown. Each subset is assigned a
+      difficulty weight (see
+      <a href="https://pubs.rsc.org/en/content/articlelanding/2017/cp/c7cp04913g">Section 4</a>).
+      When viewing category-level results, the weighted total mean absolute deviation (using the new
+      weights) [WTMAD-2] is shown.
     </p>
     <div id="gmtkn55"></div>
-    <h3>Notes</h3>
-    <ul>
-      <li>
-        To accomodate NNPs with limited atom and unpaired electron support, I'm
-        excluding GMTKN55 subsets AL2x6, ALK8, ALKBDE10, BH76, BH76RC, CHB6,
-        DC13, DIPCS10, G21EA, G21IP, G2RC, HEAVY28, HEAVYSB11, MB16-43, RC21,
-        RG18, RSE43, SIE4x4, W4-11, and YBDE18 from these results. (Ari
-        2024-10-23)
-      </li>
-    </ul>
 
     <h2>NNPs</h2>
     <div id="nnps"></div>

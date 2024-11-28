@@ -1,56 +1,56 @@
-subset,description,category,weight,num,excluded
-ACONF,Relative energies of alkane conformers,Intramolecular noncovalent interactions,30.99,15,FALSE
-ADIM6,Interaction energies of n-alkane dimers,Intermolecular noncovalent interactions,16.93,6,FALSE
-AHB21,Interaction energies in anion–neutral dimers,Intermolecular noncovalent interactions,2.53,21,FALSE
-AL2x6,Dimerisation energies of AlX3 compounds,Basic properties and reaction energies for small systems,1.58,6,TRUE
-ALK8,Dissociation and other reactions of alkaline compounds,Basic properties and reaction energies for small systems,0.91,8,TRUE
-ALKBDE10,Dissociation energies in group-1 and -2 diatomics,Basic properties and reaction energies for small systems,0.56,10,TRUE
-Amino20x4,Relative energies in amino acid conformers,Intramolecular noncovalent interactions,23.31,80,FALSE
-BH76,"Barrier heights of hydrogen transfer, heavy atom transfer, nucleophilic substitution, unimolecular and association reactions",Reaction barrier heights,3.05,76,TRUE
-BH76RC,Reaction energies of the BH76 set,Basic properties and reaction energies for small systems,2.66,30,TRUE
-BHDIV10,Diverse reaction barrier heights,Reaction barrier heights,1.25,10,FALSE
-BHPERI,Barrier heights of pericyclic reactions,Reaction barrier heights,2.72,26,FALSE
-BHROT27,Barrier heights for rotation around single bonds,Reaction barrier heights,9.06,27,FALSE
-BSR36,Bond-separation reactions of saturated hydrocarbons,Reaction energies for large systems and isomerisation reactions,3.51,36,FALSE
-BUT14DIOL,Relative energies of sugar conformers,Intramolecular noncovalent interactions,20.3,64,FALSE
-C60ISO,Relative energies between C60 isomers,Reaction energies for large systems and isomerisation reactions,0.58,9,FALSE
-CARBHB12,Hydrogen-bonded complexes between carbene analogues and H2O,Intermolecular noncovalent interactions,9.42,12,FALSE
-CDIE20,Double-bond isomerisation energies in cyclic systems,Reaction energies for large systems and isomerisation reactions,14.02,20,FALSE
-CHB6,Interaction energies in cation–neutral dimers,Intermolecular noncovalent interactions,2.12,6,TRUE
-DARC,Reaction energies of Diels–Alder reactions,Reaction energies for large systems and isomerisation reactions,1.75,14,FALSE
-DC13,13 difficult cases for DFT methods,Basic properties and reaction energies for small systems,1.03,13,TRUE
-DIPCS10,Double-ionisation potentials of closed-shell systems,Basic properties and reaction energies for small systems,0.09,10,TRUE
-FH51,Reaction energies in various (in-)organic systems,Basic properties and reaction energies for small systems,1.83,51,FALSE
-G21EA,Adiabatic electron affinities,Basic properties and reaction energies for small systems,1.69,25,TRUE
-G21IP,Adiabatic ionisation potentials,Basic properties and reaction energies for small systems,0.22,36,TRUE
-G2RC,Reaciton energies of selected G2/97 systems,Basic properties and reaction energies for small systems,1.11,25,TRUE
-HAL59,Binding energies in halogenated dimers (incl. halogen bonds),Intermolecular noncovalent interactions,12.38,59,FALSE
-HEAVY28,Noncovalent interaction energies between heavy element hydrides,Intermolecular noncovalent interactions,45.79,28,TRUE
-HEAVYSB11,Dissociation energies in heavy-element compounds,Basic properties and reaction energies for small systems,0.98,11,TRUE
-ICONF,Relative energies in conformers of inorganic systems,Intramolecular noncovalent interactions,17.4,17,FALSE
-IDISP,Intramolecular dispersion interactions,Intramolecular noncovalent interactions,4,6,FALSE
-IL16,Interaction energies in anion–cation dimers,Intermolecular noncovalent interactions,0.52,16,FALSE
-INV24,Inversion/racemisation barrier heights,Reaction barrier heights,1.78,24,FALSE
-ISO34,Isomerisation energies of small and medium-sized organic molecules,Reaction energies for large systems and isomerisation reactions,3.9,34,FALSE
-ISOL24,Isomerisation energies of large organic molecules,Reaction energies for large systems and isomerisation reactions,2.59,24,FALSE
-MB16-43,Decomposition energies of artificial molecules,Reaction energies for large systems and isomerisation reactions,0.12,43,TRUE
-MCONF,Relative energies in melatonin conformers,Intramolecular noncovalent interactions,11.43,51,FALSE
-NBPRC,Oligomerisations and H2 fragmentations of NH3/BH3 systems,Basic properties and reaction energies for small systems,2.3,12,FALSE
-PA26,Adiabatic proton affinities (incl. of amino acids),Basic properties and reaction energies for small systems,0.3,26,FALSE
-PArel,Relative energies in protonated isomers,Reaction energies for large systems and isomerisation reactions,12.28,20,FALSE
-PCONF21,Relative energies in tri- and tetrapeptide conformers,Intramolecular noncovalent interactions,35.05,18,FALSE
-PNICO23,Interaction energies in pnicogen-containing dimers,Intermolecular noncovalent interactions,13.3,23,FALSE
-PX13,Proton-exchange barriers in H2O,Reaction barrier heights,1.7,13,FALSE
-RC21,Fragmentations and rearrangements in radical cations,Basic properties and reaction energies for small systems,1.59,21,TRUE
-RG18,Interaction energies in rare-gas complexes,Intermolecular noncovalent interactions,98,18,TRUE
-RSE43,Radical-stabilisation energies,Reaction energies for large systems and isomerisation reactions,7.48,43,TRUE
-S22,Binding energies of noncovalently bound dimers,Intermolecular noncovalent interactions,7.78,22,FALSE
-S66,Binding energies of noncovalently bound dimers,Intermolecular noncovalent interactions,10.4,66,FALSE
-SCONF,Relative energies of sugar conformers,Intramolecular noncovalent interactions,12.36,17,FALSE
-SIE4x4,Self-interaction-error related problems,Basic properties and reaction energies for small systems,1.69,16,TRUE
-TAUT15,Relative energies in tautomers,Basic properties and reaction energies for small systems,18.66,15,FALSE
-UPU23,Relative energies between RNA-backbone conformers,Intramolecular noncovalent interactions,9.93,23,FALSE
-W4-11,Total atomisation energies,Basic properties and reaction energies for small systems,0.19,140,TRUE
-WATER27,Binding energies in (H2O)n,Intermolecular noncovalent interactions,0.7,27,FALSE
-WCPT18,Proton-transfer barriers in uncatalysed and water-catalysed reactions,Reaction barrier heights,1.62,18,FALSE
-YBDE18,Bond-dissociation energies in ylides,Basic properties and reaction energies for small systems,1.15,18,TRUE
+subset,description,category,weight,num
+ACONF,Relative energies of alkane conformers,Intramolecular noncovalent interactions,30.99,15
+ADIM6,Interaction energies of n-alkane dimers,Intermolecular noncovalent interactions,16.93,6
+AHB21,Interaction energies in anion–neutral dimers,Intermolecular noncovalent interactions,2.53,21
+AL2x6,Dimerisation energies of AlX3 compounds,Basic properties and reaction energies for small systems,1.58,6
+ALK8,Dissociation and other reactions of alkaline compounds,Basic properties and reaction energies for small systems,0.91,8
+ALKBDE10,Dissociation energies in group-1 and -2 diatomics,Basic properties and reaction energies for small systems,0.56,10
+AMINO20x4,Relative energies in amino acid conformers,Intramolecular noncovalent interactions,23.31,80
+BH76,"Barrier heights of hydrogen transfer, heavy atom transfer, nucleophilic substitution, unimolecular and association reactions",Reaction barrier heights,3.05,76
+BH76RC,Reaction energies of the BH76 set,Basic properties and reaction energies for small systems,2.66,30
+BHDIV10,Diverse reaction barrier heights,Reaction barrier heights,1.25,10
+BHPERI,Barrier heights of pericyclic reactions,Reaction barrier heights,2.72,26
+BHROT27,Barrier heights for rotation around single bonds,Reaction barrier heights,9.06,27
+BSR36,Bond-separation reactions of saturated hydrocarbons,Reaction energies for large systems and isomerisation reactions,3.51,36
+BUT14DIOL,Relative energies of sugar conformers,Intramolecular noncovalent interactions,20.3,64
+C60ISO,Relative energies between C60 isomers,Reaction energies for large systems and isomerisation reactions,0.58,9
+CARBHB12,Hydrogen-bonded complexes between carbene analogues and H2O,Intermolecular noncovalent interactions,9.42,12
+CDIE20,Double-bond isomerisation energies in cyclic systems,Reaction energies for large systems and isomerisation reactions,14.02,20
+CHB6,Interaction energies in cation–neutral dimers,Intermolecular noncovalent interactions,2.12,6
+DARC,Reaction energies of Diels–Alder reactions,Reaction energies for large systems and isomerisation reactions,1.75,14
+DC13,13 difficult cases for DFT methods,Basic properties and reaction energies for small systems,1.03,13
+DIPCS10,Double-ionisation potentials of closed-shell systems,Basic properties and reaction energies for small systems,0.09,10
+FH51,Reaction energies in various (in-)organic systems,Basic properties and reaction energies for small systems,1.83,51
+G21EA,Adiabatic electron affinities,Basic properties and reaction energies for small systems,1.69,25
+G21IP,Adiabatic ionisation potentials,Basic properties and reaction energies for small systems,0.22,36
+G2RC,Reaciton energies of selected G2/97 systems,Basic properties and reaction energies for small systems,1.11,25
+HAL59,Binding energies in halogenated dimers (incl. halogen bonds),Intermolecular noncovalent interactions,12.38,59
+HEAVY28,Noncovalent interaction energies between heavy element hydrides,Intermolecular noncovalent interactions,45.79,28
+HEAVYSB11,Dissociation energies in heavy-element compounds,Basic properties and reaction energies for small systems,0.98,11
+ICONF,Relative energies in conformers of inorganic systems,Intramolecular noncovalent interactions,17.4,17
+IDISP,Intramolecular dispersion interactions,Intramolecular noncovalent interactions,4,6
+IL16,Interaction energies in anion–cation dimers,Intermolecular noncovalent interactions,0.52,16
+INV24,Inversion/racemisation barrier heights,Reaction barrier heights,1.78,24
+ISO34,Isomerisation energies of small and medium-sized organic molecules,Reaction energies for large systems and isomerisation reactions,3.9,34
+ISOL24,Isomerisation energies of large organic molecules,Reaction energies for large systems and isomerisation reactions,2.59,24
+MB16-43,Decomposition energies of artificial molecules,Reaction energies for large systems and isomerisation reactions,0.12,43
+MCONF,Relative energies in melatonin conformers,Intramolecular noncovalent interactions,11.43,51
+NBPRC,Oligomerisations and H2 fragmentations of NH3/BH3 systems,Basic properties and reaction energies for small systems,2.3,12
+PA26,Adiabatic proton affinities (incl. of amino acids),Basic properties and reaction energies for small systems,0.3,26
+PArel,Relative energies in protonated isomers,Reaction energies for large systems and isomerisation reactions,12.28,20
+PCONF21,Relative energies in tri- and tetrapeptide conformers,Intramolecular noncovalent interactions,35.05,18
+PNICO23,Interaction energies in pnicogen-containing dimers,Intermolecular noncovalent interactions,13.3,23
+PX13,Proton-exchange barriers in H2O,Reaction barrier heights,1.7,13
+RC21,Fragmentations and rearrangements in radical cations,Basic properties and reaction energies for small systems,1.59,21
+RG18,Interaction energies in rare-gas complexes,Intermolecular noncovalent interactions,98,18
+RSE43,Radical-stabilisation energies,Reaction energies for large systems and isomerisation reactions,7.48,43
+S22,Binding energies of noncovalently bound dimers,Intermolecular noncovalent interactions,7.78,22
+S66,Binding energies of noncovalently bound dimers,Intermolecular noncovalent interactions,10.4,66
+SCONF,Relative energies of sugar conformers,Intramolecular noncovalent interactions,12.36,17
+SIE4x4,Self-interaction-error related problems,Basic properties and reaction energies for small systems,1.69,16
+TAUT15,Relative energies in tautomers,Basic properties and reaction energies for small systems,18.66,15
+UPU23,Relative energies between RNA-backbone conformers,Intramolecular noncovalent interactions,9.93,23
+W4-11,Total atomisation energies,Basic properties and reaction energies for small systems,0.19,140
+WATER27,Binding energies in (H2O)n,Intermolecular noncovalent interactions,0.7,27
+WCPT18,Proton-transfer barriers in uncatalysed and water-catalysed reactions,Reaction barrier heights,1.62,18
+YBDE18,Bond-dissociation energies in ylides,Basic properties and reaction energies for small systems,1.15,18
