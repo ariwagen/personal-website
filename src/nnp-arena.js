@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import nnps from './data/nnps.csv';
 import gmtkn55Subsets from './data/gmtkn55/subsets.csv';
 
+import maceoff23 from './data/gmtkn55/mace-off23-L-gmtkn55.csv';
 import omat24 from './data/gmtkn55/omat24-gmtkn55.csv';
 import orbd3v2 from './data/gmtkn55/orb-d3-v2-gmtkn55.csv';
 import orbv2 from './data/gmtkn55/orb-v2-gmtkn55.csv';
@@ -19,6 +20,10 @@ import pbed3bj from './data/gmtkn55/pbe-d3bj-gmtkn55.csv';
 import wb97md3bj from './data/gmtkn55/wb97m-d3bj-gmtkn55.csv';
 
 const gmtkn55Benchmarks = {
+  "MACE-OFF23(L)": {
+    benchmark: maceoff23,
+    from: "I.B. 2024-11-28"
+  },
   "OMat24 eqV2-L": {
     benchmark: omat24,
     from: "Ari 2024-11-25"
