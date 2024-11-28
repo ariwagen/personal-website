@@ -270,14 +270,14 @@ const GMTKN55 = () => {
           checked={noMetals}
           onClick={() => setNoMetals(!noMetals)}
         />
-        <label htmlFor="noMetals">Exclude metal containing subsets?</label> <br />
+        <label htmlFor="noMetals">Exclude metal-containing subsets?</label> <br />
         <input
           id="noNobleGases"
           type="checkbox"
           checked={noNobleGases}
           onClick={() => setNoNobleGases(!noNobleGases)}
         />
-        <label htmlFor="noNobleGases">Exclude noble gas containing subsets?</label> <br />
+        <label htmlFor="noNobleGases">Exclude noble gas–containing subsets?</label> <br />
       </div>
       <table>
         <thead>
