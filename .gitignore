@@ -8,9 +8,10 @@ dist/
 .env
 
 # Python venv
-scripts/gmtkn55/venv
-scripts/gmtkn55/__pycache__
-scripts/gmtkn55/GMTKN55.yaml
+scripts/benchmarks/venv
 
-# Checkpoints
-scripts/gmtkn55/eqV2_153M_omat.pt
+# Other
+scripts/benchmarks/gmtkn55/__pycache__
+scripts/benchmarks/gmtkn55/GMTKN55.yaml
+scripts/benchmarks/models/__pycache__
+scripts/benchmarks/models/eqV2_153M_omat.pt

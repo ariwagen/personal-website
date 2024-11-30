@@ -6,8 +6,8 @@ import cctk
 import numpy as np
 import yaml
 
+from gmtkn55 import YAML_PATH
 from so3lr import So3lrCalculator
-
 
 def eval_benchmark(
     yaml_path: str,
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     allowed_elements = [1, 6, 7, 8, 9, 15, 16, 17]  # Define allowed elements if needed
 
     wtmad = eval_benchmark(
-        yaml_path="GMTKN55.yaml",
+        yaml_path=YAML_PATH,
         csv_out_path="output.csv",  # CSV file path
         subsets=[],  # Specify subsets if needed
         skip_subsets=[
